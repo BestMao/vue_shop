@@ -375,8 +375,7 @@ export default {
           rid: this.selectedRoleId
         }
       )
-
-      if (res.meta.status !== 200) {
+      if (res.meta.status !== 200) {      
         return this.$message.error('更新角色失败！')
       }
 
