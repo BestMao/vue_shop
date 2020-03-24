@@ -171,9 +171,7 @@ export default {
         },
         //获取父级商品列表
         async getParentsGoodsList(){
-            const {data:res}=await this.$http.get('categories',{
-                params: { type: 2 }
-            });
+            const {data:res}=await this.$http.get('categories');
             if (res.meta.status!=200) return this.$message.error('获取列表失败')
             this.parentsGoodsList=res.data   
             console.log(this.parentsGoodsList);
