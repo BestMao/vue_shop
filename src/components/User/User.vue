@@ -241,13 +241,11 @@ export default {
     },
     // 监听 页码值 改变的事件
     handleCurrentChange(newPage) {
-      console.log(newPage)
       this.queryInfo.pagenum = newPage
       this.getUserList()
     },
-    // 监听 switch 开关状态的改变
+    // 监听 switch 开关状态的改变，改变后再发生
     async userStateChanged(userinfo) {
-      console.log(userinfo)
       const { data: res } = await this.$http.put(
         `users/${userinfo.id}/state/${userinfo.mg_state}`
       )
