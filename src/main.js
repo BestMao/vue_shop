@@ -14,13 +14,25 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 import axios from 'axios'
+// 导入 NProgress 包对应的JS和CSS
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 // 配置请求的跟路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 Vue.prototype.$http = axios;
 //axiso发送拦截，在发送信息的头部添加token信息作为登陆标记
 axios.interceptors.request.use(config => {
-        config.headers.Authorization = window.sessionStorage.getItem('token');
-        return config;
+        // console.log(config)
+        NProgress.start()
+        config.headers.Authorization = window.sessionStorage.getItem('token')
+            // 在最后必须 return config
+        return config
+    })
+    //请求结束时
+    // 在 response 拦截器中，隐藏进度条 NProgress.done()
+axios.interceptors.response.use(config => {
+        NProgress.done()
+        return config
     })
     //过滤器挂载
 Vue.filter('dataFormate', function(originVal) {
