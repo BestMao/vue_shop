@@ -12,7 +12,7 @@
         "core-js": "^3.6.4",
         "echarts": "^4.7.0",
         "element-ui": "^2.4.5",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "less": "^3.11.1",
         "less-loader": "^5.0.0",
         "lodash": "^4.17.15",
